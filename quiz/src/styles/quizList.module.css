@@ -1,0 +1,12 @@
+ .quizContainer{
+    display:flex;
+    justify-content: center;
+    background-color: blue;
+    border: 1px solid green;
+
+} 
+
+.h2{
+    color:red;
+    background-color: aqua;
+}

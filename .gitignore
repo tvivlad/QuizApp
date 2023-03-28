@@ -1,0 +1,4 @@
+quiz/.env
+server/.env
+quiz/node_modules
+server/node_modules

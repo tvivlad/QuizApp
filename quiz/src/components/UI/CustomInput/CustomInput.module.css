@@ -1,0 +1,7 @@
+.searchInput{
+    width:100%;
+    border:1px solid bisque;
+    margin: 0 10px;
+    font-size: 18px;
+    cursor: pointer;
+}

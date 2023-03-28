@@ -1,0 +1,8 @@
+.textArea{
+    width:90%;
+    border:1px solid bisque;
+    border-radius: 5px;
+    margin: 7px 10px;
+    font-size: 18px;
+    cursor: pointer;
+}

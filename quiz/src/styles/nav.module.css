@@ -1,0 +1,33 @@
+.navBar{
+    height: 70px;
+    background-color: papayawhip;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    box-shadow: 3px 4px 8px;
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+    width: 100%;
+}
+.navBarStaticBlock{
+    position: relative;
+    display: block;
+    height: 70px;
+    margin-bottom: 20px;
+    z-index: -100;
+}
+.LinkStyle{
+    font-size: 24px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    margin: 0 20px;
+}   
+
+.LinkStyle:last-child {
+    margin-right: 80px; 
+}

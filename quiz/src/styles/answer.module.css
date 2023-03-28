@@ -1,0 +1,16 @@
+.ansItem{
+  /*   background-color: antiquewhite; */
+/*     border-radius: 10px; */
+    margin: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    width:90%;
+    align-self: flex-start;
+}
+
+.answerText{
+    background-color: firebrick;
+    opacity: .8;
+}
+

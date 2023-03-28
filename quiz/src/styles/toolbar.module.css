@@ -1,0 +1,24 @@
+.toolbar{
+    position:fixed;
+    background-color:bisque;
+    border-radius: 8px;
+    width: 90%;
+    height: 50px;
+    margin: 0px auto;
+    left:0;
+    right:0;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    box-shadow: 3px 3px 5px;
+}
+
+.toolbarStaticBlock{
+    width: 100%;
+    height: 50px;
+}
+
+
+
+

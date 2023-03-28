@@ -1,0 +1,8 @@
+export const ADMIN_ROUTE ='/admin'
+export const LOGIN_ROUTE ='/login'
+export const REGISTRATION_ROUTE ='/registration'
+export const MAIN_ROUTE='/main'
+export const QUIZZES_ROUTE='/quizzes'
+export const MYQUIZZES_ROUTE='/myquizzes'
+export const QUESTIONS_ROUTE='/quizzes'
+export const ABOUT_ROUTE='/about'
