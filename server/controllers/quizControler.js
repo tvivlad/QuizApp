@@ -20,15 +20,18 @@ export function create(req, res) {
         userId: req.body.userId,
         description: req.body.quizDescription,    
         showInList: req.body.visibleQuiz
-      }).then(result=> console.log('Созданная запись в базе', result))
-      res.sendStatus(200)
+      }).then(result=> {
+        console.log('Созданная запись в базе', result)
+        res.json(result)
+      })
+     // res.sendStatus(200)
   }catch (e){
     console.log('Ошибка на quizController', e)
   }
 }
 
 export function getAll(req, res){
-  console.log('Запрос с параметром getAll: ', req.query.userId)
+  console.log('Запрос с параметром getAll: ', req.query.userId)  
   if (req.query.userId){      
       Quiz.findAll({
         where:{
@@ -45,5 +48,35 @@ export function getAll(req, res){
       res.send(result)
       })
   }
+}
+
+export function getOneQuiz(req, res){
+  console.log(req.params.id)
+  Quiz.findOne({
+  where:{id:req.params.id}
+  }).then(result=>{
+    console.log('Найден тест : ',result)  
+    res.status(200).json(result)
+  })
+}
+
+
+
+export function deleteQuiz (req, res) {
+  console.log('Пришёл запрос на удаление', req.params.id)   
+   if (req.params.id) {
+    Quiz.destroy({
+      where:{
+        id:req.params.id
+      }
+    }).then(result=>{
+        if (result) {
+          res.status(200).json({message:'ok'})
+        }else {
+          res.status(400).json({message:'объект не дайден'})
+        }
+    })
+  }  
+  
 }
 

@@ -7,6 +7,7 @@ import { QuizzesPage } from "./pages/QuizzesPage"
 import {AuthPage} from "./pages/AuthPage"
 import {RegPage} from './pages/RegPage'
 import { ADMIN_ROUTE, MYQUIZZES_ROUTE, QUIZZES_ROUTE, QUESTIONS_ROUTE, MAIN_ROUTE,ABOUT_ROUTE,LOGIN_ROUTE,REGISTRATION_ROUTE } from "./utils/consts"
+import QuizEditPage from "./pages/QuizEditPage"
 
 export const authRoutes=[
     {
@@ -16,6 +17,10 @@ export const authRoutes=[
     {
         path:MYQUIZZES_ROUTE,  
         Component: <MyQuizzesPage/>
+    },
+    {
+        path:MYQUIZZES_ROUTE+'/:id',
+        Component: <QuizEditPage/>
     }
 ]
 
@@ -40,9 +45,8 @@ export const publicRoutes=[
         path: LOGIN_ROUTE,  
         Component: <AuthPage/>
     },
-        {
+    {
         path: REGISTRATION_ROUTE,  
-        Component: <RegPage/>
- 
+        Component: <RegPage/> 
     }
 ]

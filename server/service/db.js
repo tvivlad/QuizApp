@@ -16,7 +16,6 @@ export const seq=new Sequelize(
         }
     });
 
-
 export function getUsers(req, res){
   User.findAll({raw:true}).then(result=>{
     console.log("Результат запроса пользователей :", result)

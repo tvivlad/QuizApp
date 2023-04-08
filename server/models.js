@@ -78,7 +78,7 @@ export const Question = seq.define("question", {
   },
   imageUrl:{
     type:Sequelize.STRING,
-    allowNull: false
+    /* allowNull: false */
   }
 })
 
@@ -96,7 +96,7 @@ export const Answer=seq.define("answer", {
   },
   imageUrl:{
     type:Sequelize.STRING,
-    allowNull: false
+  /*   allowNull: false */
   }, 
   correct:{
     type:Sequelize.TINYINT,

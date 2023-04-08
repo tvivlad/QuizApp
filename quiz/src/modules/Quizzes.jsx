@@ -3,6 +3,8 @@ import axios from 'axios'
 import {useState, useEffect, useMemo} from 'react'
 import {QuizList} from '../components/QuizList';
 import Toolbar from '../components/Toolbar';
+import { getAllQuizzes } from '../http/quizAPI';
+
 
 export default function Quizzes(props) {
   const[quizzes, setQuizzes]=useState([])
@@ -14,16 +16,19 @@ export default function Quizzes(props) {
     setQuizLoading(true)
     let userIdParam=''
     if (props.forDeveloper) userIdParam= '/?userId='+props.forDeveloper
-    //console.log(' Запрос тестов с параметром : ', `http://localhost:5000/getQuizzes${userIdParam}`)  
-    const res= await axios.get(`http://localhost:5000/api/quiz${userIdParam}`)
+    //console.log(' Запрос тестов с параметром : ', `http://localhost:5000/getQuizzes${userIdParam}`)
+    //console.log(`http://localhost:5000/api/quiz${userIdParam}`)
+    //const res= await axios.get(`http://localhost:5000/api/quiz${userIdParam}`)
+    const res=await getAllQuizzes(userIdParam)     
     console.log('Результат запроса : ', res.data)
     setQuizzes(res.data)
     setQuizLoading(false)
   }
 
-  useEffect(()=>{
+  useEffect(()=>{    
     getQuizzes()
     if (props.forDeveloper) setDevelopMode(true)
+    console.log(' id пользователя :', props.forDeveloper)
   }, [])
   // сортировка массива
   const sortedQuizzes = useMemo(()=>{
@@ -65,9 +70,8 @@ export default function Quizzes(props) {
       {!developMode&&<Toolbar toolBar={toolBar} setToolBar={setToolBar} />}
       {quizLoading
         ? <h1 style={{paddingTop:140, textAlign: 'center'}}>Quizzes loading...</h1>
-        :<QuizList quizzes={sortedAndSearchedAndFilteredQuizzes}/>    
+        :<QuizList quizzes={sortedAndSearchedAndFilteredQuizzes} mode={developMode}/>    
       }
    </>
-  );  
-  
+  );   
 }

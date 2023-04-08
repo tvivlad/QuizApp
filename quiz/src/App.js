@@ -11,14 +11,16 @@ import AppRouter from './components/AppRouter.js'
 import Context from './context.js'
 import {check} from './http/userAPI.js'
 function App() {
-  const [user, setUser] = useState({email:'', isAuth:false, name:'',surname:''})
+  const [user, setUser] = useState({email:'', isAuth:false, id:'', name:'',surname:''})
   const [loading, setLoading]= useState('true')
   
   useEffect(()=>{
-      console.log(' Пользователь :', user)
+      console.log(' Пользователь в App :', user)
+      // функция check проверяет авторизован ли пользователь. Если token не валидный, то пользователь разлогинивается
       check().then(data=>{
-          console.log('Данные пришедшие при проверке (функция check): ',data)
-          user.setUser({email:data.email, isAuth:true, name:'', surname:''})
+          console.log('Данные пришедшие при проверке (функция check): ',data.id)
+          setUser({email:data.email, isAuth:true, id:data.id, name:'Петр', surname:'Петров'})
+          console.log ("Объект user при загрузке страницы", user)
       }).finally(()=>{setLoading(false)}) 
   },[])
 
@@ -32,7 +34,7 @@ function App() {
       <BrowserRouter>
         <Navigation/>
         <AppRouter/>
-  {/*       <Routes>
+  {/*     <Routes>
           <Route path="/main" element={<MainPage/>}/>
           <Route path="/quizzes" element={<QuizzesPage/>}/>
           <Route path="quizzes/:id" element={<QuestionsPage/>}/>

@@ -15,7 +15,7 @@ export function AuthPage() {
       try {
         event.preventDefault()   
         const userData=await login(email, password)
-        setUser({email:userData.email, isAuth:true}) 
+        setUser({email:userData.email, isAuth:true, id:userData.id}) 
         console.log('Содержимое user :', user)
         navigate('/quizzes')
       } catch(e){

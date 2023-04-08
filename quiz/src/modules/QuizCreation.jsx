@@ -4,7 +4,7 @@ import CustomInput from '../components/UI/CustomInput/CustomInput'
 import CustomTextArea from '../components/UI/CustomTextArea/CustomTextArea'
 import Modal from '../components/UI/Modal/Modal'
 import CustomButton from '../components/UI/CustomButton/CustomButton'
-import axios from 'axios'
+import {addQuiz} from '../http/quizAPI'
 
 export default function QuizCreation() {
   const [quizName, setQuizName] = useState('')
@@ -19,14 +19,6 @@ export default function QuizCreation() {
   }
   
   async function createNewQuiz(){   
-    const body={               
-        quizName:quizName,
-        quizDescription:quizDescription,
-        visibleQuiz:visibleQuiz,       
-        quizType:quizType,
-        userId:'1'        
-    }
-
     const formData= new FormData()
     formData.append('imgFile', imageFile)
     formData.append('quizName', quizName)
@@ -34,6 +26,15 @@ export default function QuizCreation() {
     formData.append('visibleQuiz', visibleQuiz)
     formData.append('quizType', quizType)
     formData.append('userId', 1)
+    
+    let response
+    try {
+      response = await addQuiz(formData)
+      console.log("Результат запроса", response)
+    } catch(e){
+      alert('Ошибка :'+ e.response.data.message)
+      console.log(e.response.data.message)  
+    }   
 
 
 /*     axios({
@@ -43,8 +44,7 @@ export default function QuizCreation() {
         headers: { 'Content-Type': 'application/json' }    
     })  */
     // сокращенная запись POST Запроса
-      axios.post('http://localhost:5000/api/quiz',formData)
-
+   //   axios.post('http://localhost:5000/api/quiz',formData)
 /*     const res = await fetch('http://localhost:5000/addNewQuiz', 
                 {   
                     method:'POST', 
@@ -54,7 +54,7 @@ export default function QuizCreation() {
    // const data= await res.json()
 
     
-setQuizName('')
+    setQuizName('')
     setQuizDescription('')
     setVisibleQuiz(false) 
     setQuizType(1)

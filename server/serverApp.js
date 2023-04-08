@@ -31,11 +31,6 @@ app.use('/uploads', express.static('uploads'))
 // middleware для обработки
 app.use(errorHandler)
 
-
-
-
-
-
 function example(req,res){
     res.send(photos);
 }
@@ -54,8 +49,6 @@ app.post("/addNewQuiz", uploadRes.single('file'), db.addNewQuiz) */
 
 const PORT=process.env.PORT /* || 5000 */
 
-
-
 const start = async () => {
     try {
         seq.authenticate()
@@ -67,7 +60,6 @@ const start = async () => {
         console.log('Ошибка : ',e)
     }   
 }
-
 start()
 
 
